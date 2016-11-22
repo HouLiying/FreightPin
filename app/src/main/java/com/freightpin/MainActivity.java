@@ -11,5 +11,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.i("----", " == " + "测试测试测试测试测试测试测试测试测试测试111111111");
+        Log.i("----", " == " + "测试测试测试测试测试测试测试测试测试测试222222222");
     }
 }
