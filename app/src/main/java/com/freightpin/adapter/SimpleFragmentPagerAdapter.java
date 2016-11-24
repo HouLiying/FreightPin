@@ -11,19 +11,22 @@ import android.widget.TextView;
 import com.freightpin.R;
 import com.freightpin.fragment.PageFragment;
 
+import java.util.ArrayList;
+
 /**
  * Created by 侯丽英 on 2016/11/24.
  */
 
 public class SimpleFragmentPagerAdapter extends FragmentPagerAdapter {
     private Activity mContext;
-
+    private ArrayList<String> tabName;//首页底部tab标签
     public SimpleFragmentPagerAdapter(FragmentManager fm) {
         super(fm);
     }
-    public SimpleFragmentPagerAdapter(FragmentManager fm, Activity context) {
+    public SimpleFragmentPagerAdapter(FragmentManager fm, Activity context, ArrayList<String> tabName) {
         super(fm);
         mContext =context;
+        this.tabName =tabName;
     }
 
     @Override
@@ -33,27 +36,14 @@ public class SimpleFragmentPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 4;
+        return tabName.size();
     }
 
     public View getTabView(int count){
         View tabView;
         tabView = LayoutInflater.from(mContext).inflate(R.layout.mainactivity_tab,null);
         TextView mTxtTab = (TextView) tabView.findViewById(R.id.txt_tab);
-        switch (count){
-            case 0:
-                mTxtTab.setText(mContext.getResources().getString(R.string.tab_name1));
-                break;
-            case 1:
-                mTxtTab.setText(mContext.getResources().getString(R.string.tab_name2));
-                break;
-            case 2:
-                mTxtTab.setText(mContext.getResources().getString(R.string.tab_name3));
-                break;
-            case 3:
-                mTxtTab.setText(mContext.getResources().getString(R.string.tab_name4));
-                break;
-        }
+        mTxtTab.setText(tabName.get(count));
         return tabView;
     }
 }
